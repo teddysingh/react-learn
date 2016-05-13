@@ -30,15 +30,32 @@ var ListManager = React.createClass({
   },
 
   render: function() {
+    var divStyle = {
+      marginTop: 10
+    };
+
+    var headingStyle = {
+      background: this.props.headingColor
+    };
+
     return (
-      <div>
-      some text
-          <h3>{this.props.title}</h3>
-          <form onSubmit={this.handleSubmit}>
-            <input onChange={this.onChange} value={this.state.newItemText} />
-            <button>Add</button>
+      <div style={divStyle} className="col-sm-4">
+        <div className="panel panel-primary">
+          <div style={headingStyle} className="panel-heading">
+            <h3>{this.props.title}</h3>
+          </div>
+          <div className="row panel-body">
+            <form onSubmit={this.handleSubmit}>
+              <div className="col-sm-9">
+                <input className="form-control" onChange={this.onChange} value={this.state.newItemText} />
+              </div>
+              <div className="col-sm-2">
+                <button className="btn btn-primary">Add</button>
+              </div>
+            </form>
             <List items={this.state.items} />
-          </form>
+          </div>
+        </div>
       </div>
     );
   }
